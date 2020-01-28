@@ -17,7 +17,6 @@ const user = {
 
 const typeTransaction = user.transactions
 
-
 createTransaction({type:'credit', value:19.5});
 createTransaction({type:'debit', value:10.52});
 createTransaction({type:'debit', value:140.23});
