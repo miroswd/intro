@@ -14,33 +14,31 @@ const usuarios = [
   {
     nome: 'Lucia',
     receitas: [9.8, 120.3, 340.2, 45.3],
-    despesas: [450.2, 29.9]
+    despesas: [40.2, 29.9]
   }
 ]
 
-
-// Precisa transformar isso numa function
-
-
-for (i = 0; i < usuarios.length; i++){
-  // Calculando a receita
-  let receita = 0;
-  for (r = 0; r < usuarios[i].receitas.length; r++){
-    receita += usuarios[i].receitas[r]
-  }
-  
-  let despesa = 0;
-  // Calculando a despesa
-  for (d = 0; d < usuarios[i].despesas.length; d++){
-    despesa += usuarios[i].despesas[d]
-  }
-
-  saldo(receita,despesa,usuarios[i])
-  console.log("=======================================")
+// 
+for (i = 0;i < usuarios.length; i++){
+  calculaSaldo(usuarios[i].receitas, usuarios[i].despesas)
 }
 
-function saldo(receita,despesa, usuario){
-  const saldo = receita - despesa
-  console.log(`Saldo atual de ${usuario.nome}: R$ ${saldo.toFixed(2)}`)
+function calculaSaldo(receitas, despesas){
+  let somaReceita = 0;
+  for (i=0; i < receitas.length; i++){
+    somaReceita += receitas[i]
+  }
+
+  let somaDespesa = 0;
+  for (i=0; i < despesas.length; i++){
+    somaDespesa += despesas[i]
+    let numeros = [somaReceita, somaDespesa]
+    console.log(somaNumeros(numeros))
+  }
+    
 }
 
+function somaNumeros(numeros){
+    let saldo = (numeros[0] - numeros[1]).toFixed(2)
+    return saldo
+}
