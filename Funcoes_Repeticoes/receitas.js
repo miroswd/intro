@@ -18,7 +18,6 @@ const usuarios = [
   }
 ]
 
-// 
 for (i = 0;i < usuarios.length; i++){
   calculaSaldo(usuarios[i].receitas, usuarios[i].despesas)
 }
