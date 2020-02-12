@@ -20,8 +20,18 @@ const users = [
 
 // Go through users
 for(i=0; i < users.length; i++){
-  const balance = balanceCalculate(users[i].income, users[i].expense);
+  balanceCalculate(users[i].income, users[i].expense);
+}
+
+// Calculate the balance
+
+function balanceCalculate(income, expense){
+  const numbers = [income, expense];
+
+  const num = sumNumbers(numbers);
+  const balance = num[0] - num[1];
   
+  // Return
   let situation = "NEGATIVE";
  
   if (balance >= 0){
@@ -29,19 +39,6 @@ for(i=0; i < users.length; i++){
   } 
 
   console.log(`The user '${users[i].name}' has a ${situation} balance of R$ ${balance.toFixed(2)}`);
-}
-
-// Calculate the balance
-
-function balanceCalculate(income, expense){
- 
-  const numbers = [income, expense];
-  
-  const num = sumNumbers(numbers);
-  
-  const balance = num[0] - num[1];
-  
-  return balance
  
 }
 
