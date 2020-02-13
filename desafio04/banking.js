@@ -1,20 +1,28 @@
 // Banking Operation
 
-/*
-  credit == balance + credit 
-  debit  == balance - debit
-
-*/
-
 const user = {
   name:"Mariana",
   transactions:[],
   balance:0,
 }
 
+createTransaction({ type: "credit", value: 50 });
+createTransaction({ type: "credit", value: 120 });
+createTransaction({ type: "debit", value: 80 });
+createTransaction({ type: "debit", value: 30 });
 
-createTransaction({type:'credit',value:50.5}),
-createTransaction({type:'credit',value:510.5})
+console.log(user.balance); // 60
+
+// Report
+
+getHigherTransactionByType("credit"); // { type: 'credit', value: 120 }
+getHigherTransactionByType("debit"); // { type: 'debit', value: 80 }
+
+getAverageTransactionValue(); // 70
+
+getTransactionsCount(); // { credit: 2, debit: 2 }
+
+
 
 function createTransaction(transaction){
   user.transactions.push(transaction)
@@ -26,13 +34,10 @@ function createTransaction(transaction){
   }
 }
 
-console.log(user)
 
+//             ** REPORT **              //
 
-// Report
-
-getHigherTransactionByType('credit')
-
+// Higher
 function getHigherTransactionByType(type){
   let highest = 0;
 
@@ -46,4 +51,30 @@ function getHigherTransactionByType(type){
   }
 }
 
-// 
+// Average
+function getAverageTransactionValue(){
+  let sum = 0;
+  const transactions  = user.transactions.length
+  for(i = 0; i < transactions; i++){
+    sum += user.transactions[i].value
+  }
+
+  const media = sum/transactions
+
+  console.log(`The average value is R$ ${media}`)
+}
+
+// Number of transactions 
+function getTransactionsCount(){
+  let credit = 0;
+  let debit = 0;
+
+  for(i = 0; i < user.transactions.length; i++){
+    if(user.transactions[i].type == "credit"){
+      credit++
+    } else {
+      debit++
+    }
+  }
+  console.log({'credit':credit,'debit':debit})
+}
